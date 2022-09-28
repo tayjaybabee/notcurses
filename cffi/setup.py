@@ -23,10 +23,9 @@ def copy_include_dir():
 
 class ManPageGenerator(install):
     def run(self):
-        files = []
         outfile = 'notcurses-pydemo.1'
         pypandoc.convert_file(os.path.join(here, 'notcurses-pydemo.1.md'), 'man', outputfile=outfile, extra_args=['-s'])
-        files.append(outfile)
+        files = [outfile]
         outfile = 'ncdirect-pydemo.1'
         pypandoc.convert_file(os.path.join(here, 'ncdirect-pydemo.1.md'), 'man', outputfile=outfile, extra_args=['-s'])
         files.append(outfile)

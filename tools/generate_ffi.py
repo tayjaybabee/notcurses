@@ -11,9 +11,7 @@ def generate_ffi(notcurses_dir):
         with open(file, 'r') as f:
             content = f.read()
             finds = re.findall(match_static_inline, content)
-            for find in finds:
-                lines.append(find[0] + ' ' + find[1] + ';')
-
+            lines.extend(f'{find[0]} {find[1]};' for find in finds)
     lines.sort()
 
     with open(os.path.join(notcurses_dir, "src", "libffi", "ffi.c"), 'w') as f:

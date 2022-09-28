@@ -56,7 +56,7 @@ def define(m):
     if re.match(r'\s*(0x)?[a-fA-F0-9](u(ll)?)?', m[2]):
         return m[0]
     elif '{' not in m[2]:
-        return m[1] + ' ...'
+        return f'{m[1]} ...'
     return ''
 lines = re.sub(r'(?m)^(#define [^ (]+) ((.*\\$\n)*.*$)', define, lines)
 lines = re.sub(r'(?m)^(#define [^)\n]+\)) (.*\\$\n)*.*$', r'', lines)
